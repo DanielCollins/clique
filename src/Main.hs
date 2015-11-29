@@ -13,6 +13,11 @@ newActor :: Name -> Actor
 newActor name = Actor { name = name,
                         affinities = Map.empty }
 
+introduce :: (Actor, Actor) -> (Actor, Actor)
+introduce (a, b) = (a { affinities = insert b a},
+                    b { affinities = insert a b })
+    where insert a b = Map.insert (name a) 0 (affinities b)
+
 data DiscreteAffinity = Like
                       | Hate
 
