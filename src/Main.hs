@@ -2,7 +2,10 @@ type Name = String
 
 type Affinity = Int
 
-data Actor = Actor { name :: Name }
+data AffinityMap = Map Name Affinity
+
+data Actor = Actor { name :: Name,
+                     affinities :: AffinityMap }
 
 data DiscreteAffinity = Like
                       | Hate
