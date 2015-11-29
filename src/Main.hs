@@ -1,11 +1,17 @@
+import qualified Data.Map as Map
+
 type Name = String
 
 type Affinity = Int
 
-data AffinityMap = Map Name Affinity
+type AffinityMap = Map.Map Name Affinity
 
 data Actor = Actor { name :: Name,
                      affinities :: AffinityMap }
+
+newActor :: Name -> Actor
+newActor name = Actor { name = name,
+                        affinities = Map.empty }
 
 data DiscreteAffinity = Like
                       | Hate
